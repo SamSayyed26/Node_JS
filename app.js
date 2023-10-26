@@ -18,8 +18,16 @@ console.log(path.dirname(__dirname)); // returns the directory that contains the
 console.log(path.parse(__filename)); // breaks all paths, gives back an object that contains the root directory, the base file on which you are working, and the ext of that file
 
 setTimeout(() => {
-    console.log("After 2 Seconds"); // ISSUE: When I export the data, this setTimeout() also runs. WHY?
+    console.log("After 2 Seconds");
+    /* any function that automatically starts when the file runs; like self invoking functions will run when the the module.exports are imported to another file. When you import data from another file, the variables or the data that needs to be called, will first get created, meaning the variable has to be created to be accessed somewhere, so self invoking functions will also run, because the file ran to get the variables or the data => so the slef invoking functions are also running.*/
 }, 2000);
+
+(function selfInvoke(){
+    console.log("-----------");
+    console.log("You are Stupid");
+    console.log("-----------");
+
+})();
 
 console.log(path.sep);
 const filePath = path.join("/new/", "folder", "new.txt");
